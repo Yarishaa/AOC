@@ -18,19 +18,43 @@ def direction_to_numeric(symbol, pos):
 
 
 if __name__ == '__main__':
-    position = [0, 0]
-    gifted = {'[0, 0]': 1}
+    santa_position = [0, 0]
+    robo_position = [0, 0]
+    gifted = {'santa': {'[0, 0]': 1}, 'combined': {'[0, 0]': 2}}
 
     with open('directions.txt') as fp:
         instructions = fp.readlines()[0]
-        for direction in instructions:
-            key = direction_to_numeric(direction, position)
-            position = key      # new position
 
-            key = str(key)
-            if key in gifted.keys():
-                gifted[key] += 1
+    for idx in range(len(instructions)):
+        pos1 = direction_to_numeric(instructions[idx], santa_position)
+        santa_position = pos1
+        pos1 = str(pos1)
+
+        if pos1 in gifted.keys():
+            gifted['santa'][pos1] += 1
+        else:
+            gifted['santa'].update({pos1: 1})
+
+        if not idx % 2:
+            pos2 = direction_to_numeric(instructions[idx+1], robo_position)
+            robo_position = pos2
+            pos2 = str(pos2)
+
+            if pos1 == pos2:
+                if pos1 in gifted['combined'].keys():
+                    gifted['combined'][pos1] += 1
+                else:
+                    gifted['combined'].update({pos1: 1})
             else:
-                gifted.update({key: 1})
+                if pos1 in gifted['combined'].keys():
+                    gifted['combined'][pos1] += 1
+                else:
+                    gifted['combined'].update({pos1: 1})
 
-    print("Ans Q3a::   Santa visited {} homes atleast once".format(len(gifted)))
+                if pos2 in gifted['combined'].keys():
+                    gifted['combined'][pos2] += 1
+                else:
+                    gifted['combined'].update({pos2: 1})
+
+    print("Ans Q3a::   Santa visited {} homes atleast once".format(len(gifted['santa'])))
+    print("Ans Q3b::   Santa and Robo visited {} homes atleast once".format(len(gifted['combined'])))
