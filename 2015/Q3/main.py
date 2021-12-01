@@ -19,6 +19,7 @@ def direction_to_numeric(symbol, pos):
 
 if __name__ == '__main__':
     santa_position = [0, 0]
+    santa_combined = [0, 0]
     robo_position = [0, 0]
     gifted = {'santa': {'[0, 0]': 1}, 'combined': {'[0, 0]': 2}}
 
@@ -29,13 +30,16 @@ if __name__ == '__main__':
         pos1 = direction_to_numeric(instructions[idx], santa_position)
         santa_position = pos1
         pos1 = str(pos1)
-
-        if pos1 in gifted.keys():
+        if pos1 in gifted['santa'].keys():
             gifted['santa'][pos1] += 1
         else:
             gifted['santa'].update({pos1: 1})
 
         if not idx % 2:
+            pos1 = direction_to_numeric(instructions[idx], santa_combined)
+            santa_combined = pos1
+            pos1 = str(pos1)
+
             pos2 = direction_to_numeric(instructions[idx+1], robo_position)
             robo_position = pos2
             pos2 = str(pos2)
@@ -44,7 +48,7 @@ if __name__ == '__main__':
                 if pos1 in gifted['combined'].keys():
                     gifted['combined'][pos1] += 1
                 else:
-                    gifted['combined'].update({pos1: 1})
+                    gifted['combined'].update({pos1: 2})
             else:
                 if pos1 in gifted['combined'].keys():
                     gifted['combined'][pos1] += 1
