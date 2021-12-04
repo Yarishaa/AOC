@@ -10,6 +10,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Python" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python/2015" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python/2021" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Python/2021/Q1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Python/2021/instructions" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
