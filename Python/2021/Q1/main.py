@@ -5,7 +5,7 @@ def get_depth_values(filename):
     try:
         with open(filename) as fp:
             for val in fp.readlines():
-                datapoint.append(int(val.split('\n')[0]))
+                datapoint.append(int(val.strip('\n')))
 
     except FileNotFoundError():
         raise FileNotFoundError('Cannot find specified file!')
