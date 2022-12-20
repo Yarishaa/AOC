@@ -1,13 +1,3 @@
-"""
-A : Rock     : X   val 1
-B : Paper    : Y   val 2
-C : Scissors : Z   val 3
-
-Score:
-Loss : 0 pts
-Draw : 3 pts
-Win  : 6 pts
-"""
 moves = {
     'A' : ['ROCK', 1],
     'B' : ['PAPER', 2],
